@@ -1,0 +1,43 @@
+section.product-item {
+  height: 20rem;
+}
+
+
+section.product-item img {
+  width: 18rem;
+}
+
+section.product-item input,
+section.product-item textarea {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--color-5) 0 0 6px;
+  background-color: transparent;
+  transition: all .5s;
+  width: 100%;
+}
+
+section.product-item input:hover,
+section.product-item textarea:hover,
+section.product-item input:focus-visible,
+section.product-item textarea:focus-visible {
+    box-shadow: black 0 0 6px;
+    outline: none;
+}
+
+textarea.product-description {
+  font-family: var(--font-1);
+  font-size: inherit;
+  width: 100%;
+  resize: none;
+}
+
+.invalid-edit {
+  background-color: var(--color-1);
+  font-weight: bold;
+}
+
+.product-buttons.editing {
+  justify-content: flex-end;
+}

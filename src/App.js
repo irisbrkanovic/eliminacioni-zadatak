@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ProductContextProvider from "./central-store/ProductContext";
+import NewProductForm from "./components/NewProductForm";
+import ProductsList from "./components/ProductsList";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import ProductDetails from "./components/ProductDetails";
+import EditProductForm from "./components/EditProductForm";
 
 function App() {
+  const [isShown, setIsShown] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <ProductContextProvider>
+          <Routes>
+            <Route path="/" element={<ProductsList />} />
+            <Route exact path="/product/add" element={<NewProductForm hideForm={setIsShown} />} />
+            <Route exact path="/product/edit/:productId" element={<EditProductForm />} />
+            <Route path="/product/:productId" element={<ProductDetails  />} />
+          </Routes>
+        </ProductContextProvider>
+      </BrowserRouter>
     </div>
   );
 }
